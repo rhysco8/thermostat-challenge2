@@ -6,8 +6,21 @@ describe ('Thermostat', function(){
     thermostat = new Thermostat;
   });
 
-  it('starts at 20 degrees', function(){
-    expect(thermostat.temp).toEqual(20);
+  describe('at start', function(){
+    it('starts at 20 degrees', function(){
+      expect(thermostat.temp).toEqual(20);
+    });
+
+    it('power save mode is on', function(){
+      expect(thermostat.powerSaveMode).toEqual(true)
+    });
+  });
+
+  describe('changing power save mode', function(){
+    it('changes from on to off', function(){
+      thermostat.changePowerSaveMode();
+      expect(thermostat.powerSaveMode).toEqual(false)
+    });
   });
 
   describe('increase temperature', function() {
@@ -40,4 +53,6 @@ describe ('Thermostat', function(){
       expect(function(){ thermostat.decrease(); }).toThrow(new Error('Minimum temperature reached'));
     });
   });
+
+
 });

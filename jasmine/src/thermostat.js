@@ -5,6 +5,12 @@ const MINIMUM_TEMP = 10
 
 function Thermostat(){
   this.temp = START_TEMP;
+  this.powerSaveMode = true;
+};
+
+Thermostat.prototype.changePowerSaveMode = function () {
+  console.log(this.powerSaveMode);
+  this.powerSaveMode = !this.powerSaveMode;
 };
 
 Thermostat.prototype.increase = function () {
