@@ -65,7 +65,7 @@ describe ('Thermostat', function(){
       for (var i = 1; i <= 5; i++) {
         thermostat.increase();
       };
-      expect(function(){ thermostat.increase(); }).toThrow(new Error('Maximum temperature of power save mode reached'));
+      expect(function(){ thermostat.increase(); }).toThrow(new Error('Maximum temperature reached'));
     });
 
     it('is 32 when power save mode if off', function() {
