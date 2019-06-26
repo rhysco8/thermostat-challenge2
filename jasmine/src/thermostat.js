@@ -9,11 +9,12 @@ function Thermostat(){
 };
 
 Thermostat.prototype.changePowerSaveMode = function () {
-  console.log(this.powerSaveMode);
   this.powerSaveMode = !this.powerSaveMode;
 };
 
 Thermostat.prototype.increase = function () {
+  if (this.powerSaveMode && this.temp >= 25) throw new Error('Maximum temperature of power save mode reached');
+  if (!this.powerSaveMode && this.temp >= 32) throw new Error('Maximum temperature reached');
   this.temp += TEMP_INCREMENT;
 };
 

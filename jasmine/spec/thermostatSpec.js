@@ -21,6 +21,12 @@ describe ('Thermostat', function(){
       thermostat.changePowerSaveMode();
       expect(thermostat.powerSaveMode).toEqual(false)
     });
+
+    it('changes from off to on', function(){
+      thermostat.changePowerSaveMode();
+      thermostat.changePowerSaveMode();
+      expect(thermostat.powerSaveMode).toEqual(true)
+    });
   });
 
   describe('increase temperature', function() {
@@ -54,5 +60,20 @@ describe ('Thermostat', function(){
     });
   });
 
+  describe('maximum temperature', function() {
+    it('is 25 when power save mode is on', function() {
+      for (var i = 1; i <= 5; i++) {
+        thermostat.increase();
+      };
+      expect(function(){ thermostat.increase(); }).toThrow(new Error('Maximum temperature of power save mode reached'));
+    });
 
+    it('is 32 when power save mode if off', function() {
+      thermostat.changePowerSaveMode()
+      for (var i = 1; i <= 12; i++) {
+        thermostat.increase();
+      };
+      expect(function(){ thermostat.increase(); }).toThrow(new Error('Maximum temperature reached'))
+    });
+  });
 });
