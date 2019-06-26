@@ -15,4 +15,11 @@ describe ('Thermostat', function(){
     });
   });
 
+  describe('decrease temperature', function() {
+    it('decreases by 1', function() {
+      thermostat = new Thermostat;
+      thermostat.decrease();
+      expect(thermostat.temp).toEqual(19);
+    })
+  })
 });
