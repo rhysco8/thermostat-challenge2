@@ -4,7 +4,15 @@ describe ('Thermostat', function(){
 
   it('starts at 20 degrees', function(){
     thermostat = new Thermostat;
-    console.log(thermostat.temp)
     expect(thermostat.temp).toEqual(20);
   });
+
+  describe('increase temperature', function() {
+    it('increase by 1', function() {
+      thermostat = new Thermostat;
+      thermostat.increase();
+      expect(thermostat.temp).toEqual(21);
+    });
+  });
+
 });
