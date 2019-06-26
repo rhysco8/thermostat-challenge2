@@ -34,27 +34,10 @@ describe ('Thermostat', function(){
 
   describe('minimum temperature', function() {
     it('has a minimum temperature', function() {
-      thermostat.decrease();
-      console.log(thermostat.temp);
-      thermostat.decrease();
-      console.log(thermostat.temp);
-      thermostat.decrease();
-      console.log(thermostat.temp);
-      thermostat.decrease();
-      console.log(thermostat.temp);
-      thermostat.decrease();
-      console.log(thermostat.temp);
-      thermostat.decrease();
-      console.log(thermostat.temp);
-      thermostat.decrease();
-      console.log(thermostat.temp);
-      thermostat.decrease();
-      console.log(thermostat.temp);
-      thermostat.decrease();
-      console.log(thermostat.temp);
-      thermostat.decrease();
-      console.log(thermostat.temp);
-      expect( function(){ thermostat.decrease(); }).toThrow(new Error('Minimum temperature reached'));
-    })
-  })
+      for (var i = 1; i <= 10; i++) {
+        thermostat.decrease();
+      };
+      expect(function(){ thermostat.decrease(); }).toThrow(new Error('Minimum temperature reached'));
+    });
+  });
 });
