@@ -12,7 +12,11 @@ Thermostat.prototype.increase = function () {
 };
 
 Thermostat.prototype.decrease = function () {
-  this.temp -= TEMP_INCREMENT;
+  if (this.temp === 10) {
+    throw new Error('Minimum temperature reached')
+  } else {
+    this.temp -= TEMP_INCREMENT;
+  };
 };
 
 Thermostat.prototype.resetTemp = function () {
