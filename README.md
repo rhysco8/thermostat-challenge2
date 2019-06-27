@@ -41,4 +41,4 @@ We had to meet these specifications:
 
 ## Disclaimer
 
-This is not actually hooked up to an actual thermostat. But just imagine if it was!
+This is not actually hooked up to an actual thermostat. But just imagine if it were!
