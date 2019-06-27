@@ -12,21 +12,31 @@
 
         var thermostat = new Thermostat();
 
-        $("#temperature").text(thermostat.temp);
+        var assignColor = function() {
+          if (thermostat.energyUsage() === "low-usage") {
+            return 'green';
+          } else if (thermostat.energyUsage() === 'medium-usage') {
+            return 'black';
+          } else if (thermostat.energyUsage() === 'high-usage') {
+            return 'red';
+          };
+        };
+
+        $("#temperature").text(thermostat.temp).css("color", assignColor());
 
         $("#temperature-up").click(function () {
           thermostat.increase();
-          $("#temperature").text(thermostat.temp);
+          $("#temperature").text(thermostat.temp).css("color", assignColor());
         });
 
         $("#temperature-down").click(function () {
           thermostat.decrease();
-          $("#temperature").text(thermostat.temp);
+          $("#temperature").text(thermostat.temp).css("color", assignColor());
         });
 
         $("#temperature-reset").click(function () {
           thermostat.resetTemp();
-          $("#temperature").text(thermostat.temp);
+          $("#temperature").text(thermostat.temp).css("color", assignColor());
         });
 
         var powerSaveModeStatus = function() {
@@ -42,7 +52,7 @@
         $("#powersaving-switch").click(function (){
           thermostat.changePowerSaveMode();
           $("#power-saving-status").text(powerSaveModeStatus());
-          $("#temperature").text(thermostat.temp);
+          $("#temperature").text(thermostat.temp).css("color", assignColor());
         });
 
       });
