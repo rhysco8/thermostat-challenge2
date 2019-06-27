@@ -37,15 +37,13 @@
           }
         };
 
-
         $("#power-saving-status").text(powerSaveModeStatus());
 
         $("#powersaving-switch").click(function (){
           thermostat.changePowerSaveMode();
           $("#power-saving-status").text(powerSaveModeStatus());
+          $("#temperature").text(thermostat.temp);
         });
-
-
 
       });
 
