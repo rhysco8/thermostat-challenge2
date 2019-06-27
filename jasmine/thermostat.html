@@ -17,23 +17,37 @@
         $("#temperature-up").click(function () {
           thermostat.increase();
           $("#temperature").text(thermostat.temp);
-        })
+        });
 
         $("#temperature-down").click(function () {
           thermostat.decrease();
           $("#temperature").text(thermostat.temp);
-        })
+        });
 
         $("#temperature-reset").click(function () {
           thermostat.resetTemp();
           $("#temperature").text(thermostat.temp);
-        })
+        });
+
+        var powerSaveModeStatus = function() {
+          if (thermostat.powerSaveMode) {
+            return "on";
+          } else {
+            return "off";
+          }
+        };
+
+
+        $("#power-saving-status").text(powerSaveModeStatus());
+
+        $("#powersaving-switch").click(function (){
+          thermostat.changePowerSaveMode();
+          $("#power-saving-status").text(powerSaveModeStatus());
+        });
+
+
 
       });
-   // <!-- $("#temperature-down").click(function () {
-   //   thermostat.down();
-   //   $("#temperature" ).text(thermostat.temperature);
-   // }); -->
 
    </script>
 
@@ -45,8 +59,8 @@
    <button id='temperature-down'>-</button>
    <button id='temperature-reset'>reset</button>
    <br>
-   <h2> Power saving mode is <span id="power-saving-status"</span></h2>
-   <button id='powersaving-on'>switch PSM on</button>
-   <button id='powersaving-off'>switch PSM off</button>
+   <h2> Power save mode is <span id="power-saving-status"</span></h2>
+   <button id='powersaving-switch'>Toggle Power Save Mode</button>
+
  </body>
 </html>
