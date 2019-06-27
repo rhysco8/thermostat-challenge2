@@ -6,12 +6,44 @@
  <body>
    <script src="jquery.js"></script>
    <script src="src/thermostat.js"></script>
+   <script>
+
+      $( document ).ready(function() {
+
+        var thermostat = new Thermostat();
+
+        $("#temperature").text(thermostat.temp);
+
+        $("#temperature-up").click(function () {
+          thermostat.increase();
+          $("#temperature").text(thermostat.temp);
+        })
+
+        $("#temperature-down").click(function () {
+          thermostat.decrease();
+          $("#temperature").text(thermostat.temp);
+        })
+
+        $("#temperature-reset").click(function () {
+          thermostat.resetTemp();
+          $("#temperature").text(thermostat.temp);
+        })
+
+      });
+   // <!-- $("#temperature-down").click(function () {
+   //   thermostat.down();
+   //   $("#temperature" ).text(thermostat.temperature);
+   // }); -->
+
+   </script>
+
+
 
   <h2> Temperature is <span id='temperature'> </span></h2>
    <br>
    <button id='temperature-up'>+</button>
    <button id='temperature-down'>-</button>
-   <button id='reset'>reset</button>
+   <button id='temperature-reset'>reset</button>
    <br>
    <h2> Power saving mode is <span id="power-saving-status"</span></h2>
    <button id='powersaving-on'>switch PSM on</button>
