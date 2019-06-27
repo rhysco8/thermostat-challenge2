@@ -26,6 +26,15 @@ describe ('Thermostat', function(){
       thermostat.changePowerSaveMode();
       expect(thermostat.powerSaveMode).toEqual(true);
     });
+
+    it('lowers temperature to 25 if temperature exceeded this when power save mode is switched on', function() {
+      thermostat.changePowerSaveMode(); //power save mode switched off
+      thermostat.temp = 30
+      thermostat.changePowerSaveMode(); //power save mode switched on
+      expect(thermostat.temp).toEqual(25);
+    });
+
+
   });
 
   describe('increase temperature', function() {
