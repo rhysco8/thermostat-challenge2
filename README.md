@@ -4,6 +4,8 @@ In this challenge we built a thermostat!
 
 ## Setup
 
+Navigate in your terminal to the folder you wish to download the app into and enter the following:
+
 ### Clone repo
 ```
 $ git clone git@github.com:rhysco8/thermostat-challenge2.git
