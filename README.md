@@ -38,6 +38,12 @@ We had to meet these specifications:
 * You can reset the temperature to 20 with a reset function
 * You can ask about the thermostat's current energy usage: < 18 is low-usage, < 25 is medium-* usage, anything else is high-usage.
 * (In the challenges where we add an interface, low-usage will be indicated with green, medium-usage indicated with black, high-usage indicated with red.)
+* Display current outside temperature for London using weather API
+* Allow user to enter the city they are in and have the local weather displayed
+
+## Progress
+
+Not yet implemented: entering user's current city. Presently the user can choose from one of London, New York, Tokyo and Paris. This will be changed to a text form, rather than a dropdown menu in a future update.
 
 ## Disclaimer
 
