@@ -4,7 +4,7 @@ In this challenge we built a thermostat!
 
 ## Setup
 
-Navigate in your terminal to the folder you wish to download the app into and enter the following:
+Navigate in your terminal to the folder you wish to download the app into and enter the following on the command line:
 
 ### Clone repo
 ```
@@ -14,14 +14,12 @@ $ cd thermostat-challenge2
 
 ### Run tests
 
-To run tests in Jasmine do the following:
 ```
 $ open jasmine/SpecRunner.html
 ```
 
-### Launch thermostat
+### Launch thermostat app
 
-Start it up!
 ```
 $ open jasmine/thermostat.html
 ```

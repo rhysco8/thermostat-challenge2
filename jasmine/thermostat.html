@@ -58,10 +58,11 @@
         const APP_ID = 'feecd347e0e8923e68041c032c127cef'
         const LONDON_ID = 2643743
 
-          $.get(`http://api.openweathermap.org/data/2.5/weather?id=${LONDON_ID}&APPID=${APP_ID}`, function(weatherResponse) {
-              $("#local-temperature").text(Math.floor(weatherResponse.main.temp - 273.15));
-              $("#local-weather").text(weatherResponse.weather[0].main);
-          });
+        $.get(`http://api.openweathermap.org/data/2.5/weather?id=${LONDON_ID}&APPID=${APP_ID}`, function(weatherResponse) {
+          console.log(weatherResponse);
+          $("#local-temperature").text(Math.floor(weatherResponse.main.temp - 273.15));
+          $("#local-weather").text(weatherResponse.weather[0].description);
+        });
 
       });
 
@@ -79,8 +80,8 @@
    <button id='powersaving-switch'>Toggle Power Save Mode</button>
    <div>
      <h2>Weather in London</h2>
-     <h3>Temperature: <span id='local-temperature'></span></h3>
-     <h3>Weather: <span id='local-weather'></span></h3>
+     <h3><span id='local-weather'></span></h3>
+     <h3>temperature: <span id='local-temperature'></span></h3>
    </div>
 
  </body>
