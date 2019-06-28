@@ -56,13 +56,37 @@
         });
 
         const APP_ID = 'feecd347e0e8923e68041c032c127cef'
-        const LONDON_ID = 2643743
 
-        $.get(`http://api.openweathermap.org/data/2.5/weather?id=${LONDON_ID}&APPID=${APP_ID}`, function(weatherResponse) {
-          console.log(weatherResponse);
-          $("#local-temperature").text(Math.floor(weatherResponse.main.temp - 273.15));
-          $("#local-weather").text(weatherResponse.weather[0].description);
-        });
+        $('#current-city').change(function() {
+          console.log("hello2");
+          var city = $('#current-city').val();
+          console.log(city);
+          $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + `&appid=${APP_ID}`, function(data) {
+            $('#current-temperature').text(Math.floor(data.main.temp - 273.15));
+          })
+        })
+
+        console.log("hello0");
+
+        // $('select-city').submit(function(event) {
+        //   event.preventDefault();
+        //   var city = $('#current-city').val();
+        //   console.log("Hello1");
+        //   console.log(city);
+        //   $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + `&APPID=${APP_ID}`, function(data) {
+        //     $("#local-temperature").text(Math.floor(data.main.temp - 273.15));
+        //     $("#local-weather").text(data.weather[0].description);
+        //     console.log("Hello1")
+        //   });
+        // });
+
+
+        // $("#current-city").text(city)
+
+        // $.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APP_ID}`, function(data) {
+        //   $("#local-temperature").text(Math.floor(data.main.temp - 273.15));
+        //   $("#local-weather").text(data.weather[0].description);
+        // });
 
       });
 
@@ -70,7 +94,7 @@
 
 
 
-  <h2> Temperature is <span id='temperature'> </span></h2>
+  <h2> Temperature is <span id='temperature'> </span>&#8451</h2>
    <br>
    <button id='temperature-down'>-</button>
    <button id='temperature-reset'>reset</button>
@@ -78,11 +102,24 @@
    <br>
    <h2> Power save mode is <span id="power-saving-status"</span></h2>
    <button id='powersaving-switch'>Toggle Power Save Mode</button>
-   <div>
-     <h2>Weather in London</h2>
+   <section>
+    <h1>Current temperature: <span id="current-temperature"></span></h1>
+    <select id="current-city">
+      <option value="london">London</option>
+      <option value="New York">New York</option>
+      <option value="paris">Paris</option>
+      <option value="tokyo">Tokyo</option>
+    </select>
+  </section>
+   <!-- <section>
+     <h2>Weather in <span id='current-city'></span></h2>
      <h3><span id='local-weather'></span></h3>
-     <h3>temperature: <span id='local-temperature'></span></h3>
-   </div>
+     <h3>temperature: <span id='local-temperature'></span>&#8451</h3>
+     <form id="select-city">
+       <input type="text" id="current-city" placeholder="Enter a different city"></input>
+       <input type="submit"></input>
+     </form>
+   </section> -->
 
  </body>
 </html>
