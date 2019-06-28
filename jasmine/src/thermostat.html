@@ -2,10 +2,11 @@
 <html>
  <head>
    <title> Thermostat </title>
+   <link rel="stylesheet" type="text/css" href="thermostat.css">
  </head>
  <body>
-   <script src="jquery.js"></script>
-   <script src="src/thermostat.js"></script>
+   <script src="../jquery.js"></script>
+   <script src="thermostat.js"></script>
    <script>
 
       $( document ).ready(function() {
@@ -16,27 +17,27 @@
           if (thermostat.energyUsage() === "low-usage") {
             return 'green';
           } else if (thermostat.energyUsage() === 'medium-usage') {
-            return 'black';
+            return 'white';
           } else if (thermostat.energyUsage() === 'high-usage') {
             return 'red';
           };
         };
 
-        $("#temperature").text(thermostat.temp).css("color", assignColor());
+        $("#temperature").text(thermostat.temp);
 
         $("#temperature-up").click(function () {
           thermostat.increase();
-          $("#temperature").text(thermostat.temp).css("color", assignColor());
+          updateTemperature();
         });
 
         $("#temperature-down").click(function () {
           thermostat.decrease();
-          $("#temperature").text(thermostat.temp).css("color", assignColor());
+          updateTemperature();
         });
 
         $("#temperature-reset").click(function () {
           thermostat.resetTemp();
-          $("#temperature").text(thermostat.temp).css("color", assignColor());
+          updateTemperature();
         });
 
         var powerSaveModeStatus = function() {
@@ -52,7 +53,7 @@
         $("#powersaving-switch").click(function (){
           thermostat.changePowerSaveMode();
           $("#power-saving-status").text(powerSaveModeStatus());
-          $("#temperature").text(thermostat.temp).css("color", assignColor());
+          updateTemperature();
         });
 
         const APP_ID = 'feecd347e0e8923e68041c032c127cef'
@@ -67,6 +68,16 @@
         })
 
         console.log("hello0");
+
+        function updateTemperature() {
+          $('#temperature').text(thermostat.temp);
+          console.log(thermostat.energyUsage());
+          console.log('class');
+          $('body').css('background-color', assignColor());
+
+          // thermostat.energyUsage());
+        }
+
 
         // $('select-city').submit(function(event) {
         //   event.preventDefault();
@@ -96,12 +107,16 @@
 
   <h2> Temperature is <span id='temperature'> </span>&#8451</h2>
    <br>
-   <button id='temperature-down'>-</button>
-   <button id='temperature-reset'>reset</button>
-   <button id='temperature-up'>+</button>
+   <div class="temp-controls">
+     <button id='temperature-down'>-</button>
+     <button id='temperature-reset'>reset</button>
+     <button id='temperature-up'>+</button>
+   </div>
    <br>
-   <h2> Power save mode is <span id="power-saving-status"</span></h2>
-   <button id='powersaving-switch'>Toggle Power Save Mode</button>
+   <div class="power-saving-mode">
+     <h2> Power save mode is <span id="power-saving-status"</span></h2>
+       <button id='powersaving-switch'>Toggle Power Save Mode</button>
+    </div>
    <section>
     <h1>Current temperature: <span id="current-temperature"></span></h1>
     <select id="current-city">
